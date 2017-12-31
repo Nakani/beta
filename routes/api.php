@@ -40,5 +40,41 @@ Route::group(['middleware' => 'auth.api'], function () {
 Route::get('/login', 'Api\LoginController@loginMembro')->middleware('throttle:20,1');
 
 Route::get('/chatbot',  function () {
-    return 'Hello World';
+    return '{
+  "id": "93ca6443-2aa8-404b-94f5-d5e682b3d81d",
+  "timestamp": "2017-12-31T06:00:32.871Z",
+  "lang": "pt-br",
+  "result": {
+    "source": "agent",
+    "resolvedQuery": "oi",
+    "action": "",
+    "actionIncomplete": false,
+    "parameters": {},
+    "contexts": [],
+    "metadata": {
+      "intentId": "3167b894-dec9-4ec2-b764-c1c6d15e6194",
+      "webhookUsed": "true",
+      "webhookForSlotFillingUsed": "false",
+      "webhookResponseTime": 154,
+      "intentName": "Olá"
+    },
+    "fulfillment": {
+      "speech": "Oi Tudo bem?",
+      "messages": [
+        {
+          "type": 0,
+          "speech": "Oi Tudo bem?"
+        }
+      ]
+    },
+    "score": 1
+  },
+  "status": {
+    "code": 206,
+    "errorType": "partial_content",
+    "errorDetails": "Webhook call failed. Error: 404 Not Found",
+    "webhookTimedOut": false
+  },
+  "sessionId": "0f6e10f6-9189-43b1-96fc-0ff19ff2910f"
+}';
 });
