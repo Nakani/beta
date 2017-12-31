@@ -39,3 +39,6 @@ Route::group(['middleware' => 'auth.api'], function () {
 
 Route::get('/login', 'Api\LoginController@loginMembro')->middleware('throttle:20,1');
 
+Route::get('/chatbot',  function () {
+    return 'Hello World';
+});
