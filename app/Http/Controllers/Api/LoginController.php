@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use App;
 use Auth;
-use App\Membros;
+
 use App\Utils;
 use App\AppResult;
 
@@ -16,9 +16,9 @@ use App\AppResult;
 class LoginController extends Controller
 {
 	public function loginMembro(Request $request){
-		// var_dump($request['email']);
-		// print_r($request['password']);
-		// die();
+		var_dump($request['email']);
+		print_r($request['password']);
+		die();
 		$auth = Auth::guard('web');
 		if ($auth->attempt(['email' => strtolower($request['email']), 'password' => $request['password']]))
 		{

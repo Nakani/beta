@@ -283,11 +283,79 @@ class AdmMembrosController extends Controller
 
 		$data['verificaStatusGeral'] = Utils::verificaStatusGeral($request['idFase'],$request['idMembro']);
 
-	return view('membros.informacoes',$data);
+		return view('membros.informacoes',$data);
 
 	}
 
+	public function import(Request $request){
 
+        $file = $request->file('arquivo');
+        if (empty($file)) {
+		Session::flash('message','nenhum arquivo foi enviado ao servidor, tente novamente');
+		return redirect(url('/membros'));	
+        }
+        $file->move('./uploads/membros/',$file->getClientOriginalName());    
+
+	    $row = 1;
+		if (($handle = fopen("uploads/membros/".$file->getClientOriginalName(), "r")) !== FALSE)
+		{
+			echo "<pre>";
+		    //Passagem pelas linhas
+		    $novo = '';
+		    $update = '';
+		    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE)
+		    {
+
+		    	// print_r($data);
+		    	// die();
+
+
+				// $membro 	= new Membros();
+		  //   	$membro->nome 		= $data[0];
+		  //   	$membro->email 		= $data[1];
+		  //   	$membro->conta 		= $data[2];
+		  //   	$membro->telefone 	= $data[3];
+		  //   	$membro->sexo 		= '1';
+		  //   	$membro->cpf 		= $data[5];
+		  //   	$membro->cidade		= $data[6];
+		  //   	$membro->uf			= $data[7];
+		  //   	$membro->setor 	 	= $data[8];
+		  //   	$membro->agencia 	= $data[9];
+		  //   	$membro->cargo 		= $data[10];
+		  //   	$membro->password 	= Hash::make($data[2]);
+		  //   	$membro->id_cliente = $data[11];
+
+		echo
+		"INSERT INTO membros(nome, email, cpf, conta, telefone,uf,cidade,setor,agencia,cargo,password,id_cliente)
+		VALUES('$data[0]','$data[1]','$data[2]','$data[3]','$data[4]','$data[5]','$data[6]','$data[7]','$data[8]','$data[9]','123123','$data[11]');";
+		echo "<br>";
+
+
+
+
+
+		    	// $search  = $membro->where('email',$data[1])->get()->first();
+		    	// if($search['id']==NULL){
+			    // 	$resp = $membro->save();
+			    // 	if($resp=='1'){
+			    // 		$novo++;		    		
+			    // 	}
+		    	// }else{
+		    	// 	$update = $membro->where('id',$search['id'])->update($membro->toArray());
+		    	// 	if($update=='1'){
+			    // 		$update++;
+			    		
+
+			    // 	}
+		    	// }
+	    }
+		fclose($handle);
+		 die();
+		// Session::flash('message','Adicionado '.$novo.'com sucesso! e '.$update.' atualizados ');
+		// return redirect(url('/membros'));	
+
+		}
+	}
 
 }
 

@@ -47,6 +47,22 @@
         <script>    
             var url ='{{ url('/') }}';
         </script>
+        <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+        <script>
+          // Initialize Firebase
+          var config = {
+            apiKey: "AIzaSyB2-vLuG-sCW2DPAcls04ltwBxNv8sUc_k",
+            authDomain: "pascal-37098.firebaseapp.com",
+            databaseURL: "https://pascal-37098.firebaseio.com",
+            projectId: "pascal-37098",
+            storageBucket: "pascal-37098.appspot.com",
+            messagingSenderId: "22142406102"
+          };
+          firebase.initializeApp(config);
+        </script>
+
+
+        
         @yield('endhead_script')
     </head>
     <!-- END HEAD -->

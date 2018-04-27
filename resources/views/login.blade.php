@@ -9,7 +9,7 @@
 
     <head>
         <meta charset="utf-8" />
-        <title>Pascal Login</title>
+        <title>DashBoard Login</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="Painel Adminstrativo para gerenciar app Diana " name="Diana Painel" />
@@ -41,8 +41,8 @@
     <body class=" login">
         <!-- BEGIN LOGO -->
         <div class="logo">
-            <a href="index.html">
-                <img st src="{{ url('/') }}/img/logo.png"  alt="" /> </a>
+            <a href="#">
+                <!-- <img st src="{{ url('/') }}/img/logo.png"  alt="" /> </a> -->
         </div>
         <!-- END LOGO -->
         <!-- BEGIN LOGIN -->
@@ -97,7 +97,7 @@
                 </div> -->
             </form>
         </div>
-        <div class="copyright hide"> 2017 © Diana. </div>
+        <div class="copyright hide"> 2018 © Dashboard. </div>
         <!-- END LOGIN -->
         <!--[if lt IE 9]>
 <script src="{{ url('/') }}/scripts/global/plugins/respond.min.js"></script>

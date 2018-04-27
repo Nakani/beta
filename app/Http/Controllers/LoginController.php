@@ -72,4 +72,22 @@ class LoginController extends Controller
 		die();
 		return Hash::make($request['senha']);
 	}
+
+	public function cadastro(Request $request){
+		$email 		= $request['email'];
+		$password 	= $request['password'];
+
+		$firebase = "https://advogaapp.firebaseio.com/users/$id/dados/expToken.json";
+		$curl = curl_init();
+		curl_setopt_array($curl, array(
+		    CURLOPT_RETURNTRANSFER => 1,
+		    CURLOPT_URL => $firebase,
+		    CURLOPT_USERAGENT => 'Advoga-app'
+		));
+		$response = curl_exec($curl);
+		curl_close($curl);
+		return json_decode($response);
+
+	}
+
 }

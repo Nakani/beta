@@ -11,10 +11,16 @@
 |
 */
 
+Route::post('/uploadMembros', 'Dash\AdmMembrosController@import');
 // login
 Route::get('/', 'LoginController@index');
 Route::get('/login', 'LoginController@index');
+Route::get('/cadastro', function()
+{
+	return view('cadastro');
+});
 Route::post('/login', 'LoginController@auth');
+Route::post('/cadastro', 'LoginController@cadastro');
 Route::get('/logout', 'LoginController@logout');
 Route::get('/senha', 'LoginController@getSenha');
 
